@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "jgeoip/version"
+require File.expand_path("../lib/jgeoip/version", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "jgeoip"
