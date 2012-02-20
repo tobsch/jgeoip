@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   # s.add_runtime_dependency "rest-client"
   s.add_development_dependency 'shoulda-context'
   s.add_development_dependency 'buildr'
+  s.add_development_dependency 'ci_reporter'
 end
