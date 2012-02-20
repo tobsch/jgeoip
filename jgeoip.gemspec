@@ -22,4 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'shoulda-context'
   s.add_development_dependency 'buildr'
   s.add_development_dependency 'ci_reporter'
+  
+  # necessary instead of Mini:Unit as Mini:Unit cannot produce Jenkins-compatible test results
+  s.add_development_dependency 'test-unit'
 end
