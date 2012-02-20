@@ -1,6 +1,5 @@
 require 'test_helper'
 require 'benchmark'
-require 'geoip'
 
 class JGeoIPTest < Test::Unit::TestCase
   context 'The Geoip City API' do
