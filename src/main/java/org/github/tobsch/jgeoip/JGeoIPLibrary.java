@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.lang.Object;
 import org.jruby.Ruby;
+import org.jruby.RubyNil;
 import org.jruby.RubyArray;
 import org.jruby.RubyClass;
 import org.jruby.RubyFixnum;
@@ -62,8 +63,12 @@ public class JGeoIPLibrary implements Library {
     }
 
     @JRubyMethod
-    public RubyHash city(ThreadContext context, IRubyObject searchString) throws IOException {
+    public IRubyObject city(ThreadContext context, IRubyObject searchString) throws IOException {
       Location location = cl.getLocation(searchString.toString());
+      if (location == null) {
+        RubyNil nil = new RubyNil(ruby);
+        return nil;
+      }
       
       RubyHash loc = new RubyHash(ruby);
       loc.put(RubySymbol.newSymbol(ruby, "city"), RubyString.newString(ruby, location.city));

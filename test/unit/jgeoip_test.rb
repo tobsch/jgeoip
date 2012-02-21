@@ -18,5 +18,10 @@ class JGeoIPTest < Test::Unit::TestCase
       result = @geo.city('207.97.227.239')
       assert_equal 'San Francisco', result[:city] 
     end
+
+    should 'throw a clean exception if the ip was not found' do
+      result = @geo.city('127.0.0.1')
+      assert_equal nil, result
+    end
   end
 end
