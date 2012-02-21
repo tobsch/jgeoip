@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
   s.add_development_dependency 'shoulda-context'
-  s.add_development_dependency 'buildr'
+  s.add_development_dependency 'buildr', '1.4.6'
   s.add_development_dependency 'ci_reporter'
   
   # necessary instead of Mini:Unit as Mini:Unit cannot produce Jenkins-compatible test results
