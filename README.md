@@ -17,9 +17,7 @@ Results are promising:
 
     pure ruby GeoIP:
      35.614000   0.000000  35.614000 ( 35.614000)
-    JGeoIP (Old Version, as extension):
-      1.318000   0.000000   1.318000 (  1.318000)
-    JGeoIP (new Version):
+    JGeoIP (Old Version, as extension, updating soon):
       1.318000   0.000000   1.318000 (  1.318000)
       
 Please note that we did a warmup to give the JIT a chance.
@@ -27,5 +25,6 @@ The benchmark does 100k lookups.
 Those results are Java 7, jruby-1.6.5 based. Looking forward to 1.7.0.
 
 ### TODO
+* switch back to an extension and a proxy object: this is surely faster. but time is money at the moment
 * integrate the other lookup methods: so far we're just able to do city lookups
 * check all the license related stuff: the maxmind lib is LGPL, which would be okay for me    
