@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Tobias Schlottke"]
   s.email       = ["tobias.schlottke@gmail.com"]
   s.homepage    = "http://github.com/tobsch/jgeoip"
-  s.summary     = 'Fast JRuby extension for Maxminds GeoIP Databases'
-  s.description = 'This gem wraps maxminds original java library with a pure jRuby extension, which should make things faster than calling the lib through jRuby directly.'
+  s.summary     = 'Fast jRuby library for Maxminds GeoIP Databases'
+  s.description = 'This gem wraps maxminds original java library, which should make things faster than using other pure ruby libraries.'
   s.platform    = 'java'
   
   s.files         = `git ls-files`.split("\n")
