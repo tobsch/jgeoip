@@ -8,7 +8,7 @@ def benchmark(description, &block)
   }
   # do the actual measurements
   puts Benchmark.measure {
-    10_000.times {
+    100_000.times {
       block.call
     }
   }
@@ -22,7 +22,6 @@ db = GeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
 benchmark 'pure ruby GeoIP:'   do
   result = db.city('github.com')
 end
-
 
 db = JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
 benchmark 'JGeoIP:' do
