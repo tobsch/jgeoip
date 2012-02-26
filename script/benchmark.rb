@@ -1,4 +1,5 @@
 require 'benchmark'
+require 'rubygems'
 
 def benchmark(description, &block)
   puts description
@@ -13,24 +14,32 @@ def benchmark(description, &block)
     }
   }
 end
-# check the JGeoIP
-require File.expand_path('../../lib/jgeoip.rb', __FILE__)
+
+jruby = defined?(JRUBY_VERSION)
+DB_FILE = '/opt/MaxMind/GeoLiteCity.dat'
+if jruby
+  # check the JGeoIP
+  require File.expand_path('../../lib/jgeoip.rb', __FILE__)
+
+  db = JGeoIP.new(DB_FILE)
+  benchmark 'JGeoIP:' do
+    result = db.city('github.com')
+  end
+end
 
 # check the pure lib
-# require 'geoip'
-# db = GeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
-# benchmark 'pure ruby GeoIP:'   do
-#   result = db.city('github.com')
-# end
-
-db = JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
-benchmark 'JGeoIP:' do
+gem 'geoip'
+require 'geoip'
+db = GeoIP.new(DB_FILE)
+benchmark 'pure ruby GeoIP:'   do
   result = db.city('github.com')
 end
 
-db = JGeoIPJava.new('/opt/MaxMind/GeoLiteCity.dat')
-benchmark 'JGeoIPJava:' do
-  result = db.city('github.com')
+unless jruby
+  gem 'geoip-c'
+  require 'geoip-c/geoip'
+  db = GeoIP::City.new(DB_FILE)
+  benchmark 'geoip-c:' do
+    db.look_up('207.97.227.239')
+  end
 end
-
-
