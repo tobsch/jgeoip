@@ -1,15 +1,15 @@
-## Fast JRuby GeoIP Extension
+# Fast JRuby GeoIP Extension
 This jRuby extension will help you with all your GeoIP needs in JRuby.
 It is pretty small and simple right now but will surely grow up soon.
 You can easily use it with the free GeoIP Library from maxmind.com aswell as the commercial one.
 
-### example
+## example
 
     p JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat').city('github.com')
 
 Will return a Location object with all the result properties and a #to_hash method
 
-### speed?
+## speed?
 There is a benchmark script included, so you'll be able to check it yourself.
 We compared it to the GeoIP gem so far (because geoip-c won't compile with jRuby).
 Results are promising:
