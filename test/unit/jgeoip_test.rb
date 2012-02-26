@@ -19,6 +19,11 @@ class JGeoIPTest < Test::Unit::TestCase
       assert_equal 'United States', result[:country_name]
     end
     
+    should 'find the city by ip too' do
+      result = @geo.city('62.141.33.131')
+      assert_equal 'United States', result[:city]
+    end
+    
     should 'be able to return the result as a hash' do
       result = @geo.city('85.183.18.35')
       assert_kind_of Hash, result.to_hash

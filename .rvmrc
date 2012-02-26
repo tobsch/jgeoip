@@ -1,2 +1,2 @@
-rvm use jruby-head
+rvm use jruby-1.6.7
 
