@@ -24,6 +24,22 @@ class JGeoIPTest < Test::Unit::TestCase
       assert_equal 'United States', result[:country_name]
     end
 
+    should 'find out the distance between to points' do
+      p1 = @geo.city('github.com')
+      p2 = @geo.city('alice.de')
+      p3 = @geo.city('facebook.com')
+      # from sf to hamburg
+      assert_equal 8893.200366609715, p1.distance(p2)
+      
+      # from sf to sf
+      assert_equal 46.25354059751858, p1.distance(p3)
+      
+      # no valid loation
+      assert_raises Java::JavaLang::ClassCastException do
+        p1.distance('foo')
+      end
+    end
+
     should 'return nil if an attribute does not exist' do
       result = @geo.city('207.97.227.239')
       assert_equal nil, result[:fooooooo]

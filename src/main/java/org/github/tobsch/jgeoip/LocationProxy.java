@@ -80,6 +80,12 @@ public class LocationProxy extends RubyObject {
   }
   
   @JRubyMethod
+  public IRubyObject distance(ThreadContext context, IRubyObject p2) {
+    LocationProxy p2loc = (LocationProxy)p2;
+    return context.runtime.newFloat(location.distance(p2loc.location));
+  }
+  
+  @JRubyMethod
   public IRubyObject inspect(ThreadContext context) {
     return toHash(context).inspect();
   }

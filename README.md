@@ -4,10 +4,17 @@ It is pretty small and simple right now but will surely grow up soon.
 You can easily use it with the free GeoIP Library from maxmind.com aswell as the commercial one.
 
 ## example
-
+### City Lookup
     p JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat').city('github.com')
 
 Will return a Location object with all the result properties and a #to_hash method
+    
+### Distance between two locations (km)
+    p1 = @geo.city('github.com')
+    p2 = @geo.city('facebook.com')
+    
+    p p1.distance(p2)
+    # => 46.25354059751858
 
 ## speed?
 There is a benchmark script included, so you'll be able to check it yourself.
