@@ -18,5 +18,5 @@ define 'jgeoip' do
     cp project.compile.dependencies.collect(&:to_s), project.path_to('lib/java') 
   end
   
-  task :setup => [ :clean, :copy_dependencies ]
+  task :setup => [ :clean, :compile, :package, :copy_dependencies ]
 end
