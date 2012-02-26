@@ -2,11 +2,25 @@ package org.github.tobsch.jgeoip;
 
 import com.maxmind.geoip.*;
 
+import java.io.IOException;
+
+import org.jruby.Ruby;
+
+import org.jruby.RubyClass;
+import org.jruby.RubyObject;
+
+import org.jruby.anno.JRubyMethod;
+import org.jruby.runtime.ThreadContext;
+import org.jruby.runtime.builtin.IRubyObject;
+
+
 public class JGeoIP extends RubyObject {
   LookupService cl;
+  static RubyClass locationProxyClass;
 
   public JGeoIP(final Ruby ruby, RubyClass rubyClass) {
     super(ruby, rubyClass);
+    this.locationProxyClass = ruby.getClass("Location");
   }
     
   @JRubyMethod
@@ -20,12 +34,11 @@ public class JGeoIP extends RubyObject {
   public IRubyObject city(ThreadContext context, IRubyObject searchString) throws IOException {
     Location location = cl.getLocation(searchString.toString());
     if (location == null) {
-      RubyNil nil = new RubyNil(ruby);
-      return nil;
+      return context.runtime.getNil();
     }
     
-    LocationProxy location = new LocationProxy(context, loc);
+    LocationProxy loc = new LocationProxy(context.runtime, locationProxyClass, location);
         
-    return location;
+    return loc;
   }
 }
