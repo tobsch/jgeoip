@@ -6,6 +6,8 @@ You can easily use it with the free GeoIP Library from maxmind.com aswell as the
 ## example
 ### City Lookup
     p JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat').city('github.com')
+    
+    # => {:city=>"San Francisco", :postal_code=>"94110", :country_code=>"US", :country_name=>"United States", :region=>"CA",  :latitude=>37.74839782714844, :longitude=>37.74839782714844, :dma_code=>807, :area_code=>415, :metro_code=>807}
 
 Will return a Location object with all the result properties and a #to_hash method
     
