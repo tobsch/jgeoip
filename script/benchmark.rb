@@ -17,14 +17,19 @@ end
 require File.expand_path('../../lib/jgeoip.rb', __FILE__)
 
 # check the pure lib
-require 'geoip'
-db = GeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
-benchmark 'pure ruby GeoIP:'   do
-  result = db.city('github.com')
-end
+# require 'geoip'
+# db = GeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
+# benchmark 'pure ruby GeoIP:'   do
+#   result = db.city('github.com')
+# end
 
 db = JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
 benchmark 'JGeoIP:' do
+  result = db.city('github.com')
+end
+
+db = JGeoIPJava.new('/opt/MaxMind/GeoLiteCity.dat')
+benchmark 'JGeoIPJava:' do
   result = db.city('github.com')
 end
 

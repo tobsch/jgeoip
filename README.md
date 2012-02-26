@@ -1,5 +1,5 @@
-## Fast JRuby GeoIP Library
-This library will help you with all your GeoIP needs in JRuby.
+## Fast JRuby GeoIP Extension
+This jRuby extension will help you with all your GeoIP needs in JRuby.
 It is pretty small and simple right now but will surely grow up soon.
 You can easily use it with the free GeoIP Library from maxmind.com aswell as the commercial one.
 
@@ -7,7 +7,7 @@ You can easily use it with the free GeoIP Library from maxmind.com aswell as the
 
     p JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat').city('github.com')
 
-Will return a location object with all the result properties and a #to_hash method
+Will return a Location object with all the result properties and a #to_hash method
 
 
 ### speed?
@@ -17,8 +17,10 @@ Results are promising:
 
     pure ruby GeoIP:
      35.614000   0.000000  35.614000 ( 35.614000)
-    JGeoIP (Old Version, as extension, updating soon):
-      1.318000   0.000000   1.318000 (  1.318000)
+    JGeoIP (>=0.1.5):
+      0.285000   0.000000   0.285000 (  0.286000)
+    JGeoIP (non extension version, <0.1.5):
+      1.047000   0.000000   1.047000 (  1.048000)    
       
 Please note that we did a warmup to give the JIT a chance.
 The benchmark does 100k lookups.

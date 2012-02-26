@@ -14,20 +14,36 @@ class JGeoIPTest < Test::Unit::TestCase
       assert_equal 'San Francisco', result[:city] 
     end
     
+    should 'be a proper location object' do
+      result = @geo.city('github.com')
+      assert_kind_of Location, result
+    end
+    
     should 'find the city by ip too' do
       result = @geo.city('207.97.227.239')
       assert_equal 'United States', result[:country_name]
     end
-    
-    should 'find the city by ip too' do
-      result = @geo.city('62.141.33.131')
-      assert_equal 'United States', result[:city]
+
+    should 'return nil if an attribute does not exist' do
+      result = @geo.city('207.97.227.239')
+      assert_equal nil, result[:fooooooo]
     end
-    
-    should 'be able to return the result as a hash' do
+
+    should 'return a nil value if there is no value for an attribute' do
       result = @geo.city('85.183.18.35')
-      assert_kind_of Hash, result.to_hash
+      assert_equal nil, result.postal_code
+      assert_equal 0, result.dma_code
+    end
+
+    should 'be able to return the result as a hash' do
+      result = @geo.city('85.183.18.35').to_hash
+      assert_kind_of Hash, result
       assert_equal 'Germany', result[:country_name]
+    end
+
+    should 'be inspectable' do
+      result = @geo.city('85.183.18.35').inspect
+      assert_match '{:city=>"Othmarschen"', result
     end
 
     should 'throw a clean exception if the ip was not found' do
