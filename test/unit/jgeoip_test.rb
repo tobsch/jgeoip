@@ -1,3 +1,5 @@
+# coding: utf-8
+
 require 'test_helper'
 require 'benchmark'
 
@@ -66,5 +68,12 @@ class JGeoIPTest < Test::Unit::TestCase
       result = @geo.city('127.0.0.1')
       assert_equal nil, result
     end
+    
+    should 'convert values to utf8' do
+      result = @geo.city('hs-osnabrueck.de').city
+      assert_equal 'Osnabrück', result
+      assert_equal 'UTF-8', result.encoding.to_s
+    end
+    
   end
 end
