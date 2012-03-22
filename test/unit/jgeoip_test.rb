@@ -61,7 +61,7 @@ class JGeoIPTest < Test::Unit::TestCase
 
     should 'be inspectable' do
       result = @geo.city('85.183.18.35').inspect
-      assert_match '{:city=>"Othmarschen"', result
+      assert_match /:city=>"(Othmarschen|Sparrieshoop)"/, result
     end
 
     should 'throw a clean exception if the ip was not found' do
