@@ -37,9 +37,9 @@ class JGeoIPTest < Test::Unit::TestCase
       assert_equal 46.25354059751858, p1.distance(p3)
       
       # no valid loation
-      #assert_raises Java::JavaLang::ClassCastException do
+      assert_raises Java::JavaLang::ClassCastException, TypeError do
         p1.distance('foo')
-        #end
+      end
     end
 
     should 'return nil if an attribute does not exist' do
