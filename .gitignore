@@ -5,3 +5,4 @@ pkg/*
 target/*
 .DS_Store
 **/.DS_Store
+test/reports/*

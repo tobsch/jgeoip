@@ -31,10 +31,10 @@ class JGeoIPTest < Test::Unit::TestCase
       p2 = @geo.city('alice.de')
       p3 = @geo.city('facebook.com')
       # from sf to hamburg
-      assert_equal 8893.200366609715, p1.distance(p2)
+      assert_in_delta 8893.200366609715, p1.distance(p2), 10
       
       # from sf to sf
-      assert_equal 46.25354059751858, p1.distance(p3)
+      assert_in_delta 46.25354059751858, p1.distance(p3), 10
     end
 
     should 'return nil if an attribute does not exist' do
