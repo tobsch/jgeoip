@@ -122,7 +122,7 @@ public class LocationProxy extends RubyObject {
 
   @JRubyMethod(name = "longitude")
   public IRubyObject getLongitude(ThreadContext context) {
-    return context.runtime.newFloat(location.latitude);
+    return context.runtime.newFloat(location.longitude);
   }
 
   @JRubyMethod(name = "dma_code")

@@ -24,6 +24,8 @@ class JGeoIPTest < Test::Unit::TestCase
     should 'find the city by ip too' do
       result = @geo.city('207.97.227.239')
       assert_equal 'United States', result[:country_name]
+      assert_in_delta 37.74839782714844, result.latitude, 10
+      assert_in_delta -122.41560363769531, result.longitude, 10
     end
 
     should 'find out the distance between to points' do
