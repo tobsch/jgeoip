@@ -4,6 +4,17 @@ require 'test_helper'
 require 'benchmark'
 
 class JGeoIPTest < Test::Unit::TestCase
+  context 'The GeoIP Organization/ISP API' do
+    setup do
+      @geo = JGeoIP.new('/opt/MaxMind/GeoIPISP.dat')
+    end
+
+    should 'find the correct isp by ip' do
+      assert_equal "Gruner + Jahr AG & Co, Hamburg", @geo.org('194.12.192.169')
+      assert_equal "Deutsche Telekom AG", @geo.org('193.159.61.143')
+    end
+  end
+
   context 'The Geoip City API' do
     setup do
       @geo = JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
