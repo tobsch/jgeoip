@@ -10,8 +10,10 @@ class JGeoIPTest < Test::Unit::TestCase
     end
 
     should 'find the correct isp by ip' do
-      assert_equal "Gruner + Jahr AG & Co, Hamburg", @geo.org('194.12.192.169')
+      assert_equal "Gruner + Jahr AG & Co KG", @geo.org('194.12.192.169')
       assert_equal "Deutsche Telekom AG", @geo.org('193.159.61.143')
+      assert_equal 722985, @geo.id('193.159.61.143')
+      assert_equal 844724, @geo.id('194.12.192.169')
     end
   end
 

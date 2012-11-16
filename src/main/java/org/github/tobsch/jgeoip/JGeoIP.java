@@ -51,4 +51,14 @@ public class JGeoIP extends RubyObject {
     
     return context.runtime.newString(org);
   }
+
+  @JRubyMethod
+  public IRubyObject id(ThreadContext context, IRubyObject searchString) throws IOException {
+    Integer id = cl.getID(searchString.toString());
+    if (id == null) {
+      return context.runtime.getNil();
+    }
+    
+    return context.runtime.newFixnum((long)id);
+  }
 }

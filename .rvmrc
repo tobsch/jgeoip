@@ -1,1 +1,1 @@
-rvm use jruby-1.6.7
+rvm use jruby-1.7.0 --create
