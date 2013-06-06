@@ -48,8 +48,8 @@ class JGeoIPTest < Test::Unit::TestCase
       # from sa to hamburg
       assert_in_delta 8537.271518247373, p1.distance(p2), 10
       
-      # from sf to sf
-      assert_in_delta 46.25354059751858, p1.distance(p3), 10
+      # from sa to sf
+      assert_in_delta 2363.280770976432, p1.distance(p3), 10
     end
 
     should 'return nil if an attribute does not exist' do
