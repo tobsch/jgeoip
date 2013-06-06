@@ -26,7 +26,7 @@ class JGeoIPTest < Test::Unit::TestCase
       correct_keys = [ :city, :postal_code, :country_code, :country_name, :region, :latitude, :longitude, :dma_code, :area_code, :metro_code ]
       result = @geo.city('github.com')
       assert_equal correct_keys, result.keys
-      assert_equal 'San Francisco', result[:city] 
+      assert_equal 'San Antonio', result[:city] 
     end
     
     should 'be a proper location object' do
@@ -45,8 +45,8 @@ class JGeoIPTest < Test::Unit::TestCase
       p1 = @geo.city('github.com')
       p2 = @geo.city('alice.de')
       p3 = @geo.city('facebook.com')
-      # from sf to hamburg
-      assert_in_delta 8893.200366609715, p1.distance(p2), 10
+      # from sa to hamburg
+      assert_in_delta 8537.271518247373, p1.distance(p2), 10
       
       # from sf to sf
       assert_in_delta 46.25354059751858, p1.distance(p3), 10
