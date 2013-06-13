@@ -11,7 +11,7 @@ define 'jgeoip' do
   project.version = JGeoIP::VERSION
   
   # add dependencies from jar
-  compile.using(:target => '1.6', :source => '1.6').with('org.kohsuke:geoip:jar:1.2.8')
+  compile.using(:target => '1.6', :source => '1.6').with('com.maxmind.geoip:geoip-api:jar:1.2.10')
   
   # package our shiny little bidder jar
   package :jar, :file => _("lib/java/jgeoip-#{JGeoIP::VERSION}.jar")
