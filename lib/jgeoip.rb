@@ -1,7 +1,7 @@
 require 'java'
 
 # Load the required jars
-require File.expand_path('../java/geoip-1.2.5', __FILE__)
+require File.expand_path('../java/geoip-api-1.2.10', __FILE__)
 
 # load the version file
 require File.expand_path('../jgeoip/version', __FILE__)
