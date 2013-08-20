@@ -19,7 +19,8 @@ class JGeoIPTest < Test::Unit::TestCase
 
   context 'The Geoip City API' do
     setup do
-      @geo = JGeoIP.new('/opt/MaxMind/GeoLiteCity.dat')
+      @db_path = 'tmp/GeoLiteCity.dat'
+      @geo = JGeoIP.new(@db_path)
     end
 
     should 'find the correct city by hostname' do
