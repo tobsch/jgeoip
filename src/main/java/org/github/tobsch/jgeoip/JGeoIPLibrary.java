@@ -29,6 +29,7 @@ public class JGeoIPLibrary implements Library {
     });
 
     jgeoip.defineAnnotatedMethods(JGeoIP.class);
+    jgeoip.defineAnnotatedConstants(JGeoIP.class);
     
     // define the location class
     final RubyClass location = ruby.defineClass("Location", ruby.getObject(), new ObjectAllocator() {

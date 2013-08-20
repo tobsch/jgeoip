@@ -85,6 +85,15 @@ class JGeoIPTest < Test::Unit::TestCase
       assert_equal 'Osnabrück', result
       assert_equal 'UTF-8', result.encoding.to_s
     end
-    
+
+    should 'accept caching options' do
+      JGeoIP.new(@db_path, :caching => JGeoIP::GEOIP_STANDARD | JGeoIP::GEOIP_INDEX_CACHE)
+    end
+
+    should 'raises an error when the caching options are not a number' do
+      assert_raise ArgumentError do
+        JGeoIP.new(@db_path, :caching => 'yes please')
+      end
+    end
   end
 end
