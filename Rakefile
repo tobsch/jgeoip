@@ -1,5 +1,7 @@
 require 'bundler/gem_tasks'
 require 'rake/testtask'
+require 'open-uri'
+require 'zlib'
 
 desc 'Run all the tests'
 task :default => [ :test ]
@@ -16,6 +18,18 @@ namespace :test do
       t.libs << "test"
       t.test_files = Dir["test/#{category}/**/*_test.rb"]
       t.verbose = true
+    end
+  end
+end
+
+task :setup => 'setup:download_db'
+namespace :setup do
+  task :download_db do
+    remote_io = open('http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz')
+    remote_io = Zlib::GzipReader.new(remote_io)
+    FileUtils.mkdir_p('tmp')
+    File.open('tmp/GeoLiteCity.dat', 'w') do |local_io|
+      local_io.write(remote_io.read)
     end
   end
 end
