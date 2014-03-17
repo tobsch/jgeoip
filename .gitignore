@@ -7,3 +7,4 @@ target/*
 **/.DS_Store
 test/reports/*
 /tmp
+/lib/java/*.jar
