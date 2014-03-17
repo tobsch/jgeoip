@@ -1,12 +1,6 @@
-require 'java'
+require 'geoip-jars'
 
-# Load the required jars
-require File.expand_path('../java/geoip-api-1.2.10', __FILE__)
+Dir[File.expand_path('../java/*.jar', __FILE__)].each { |jar| require(jar) }
 
-# load the version file
-require File.expand_path('../jgeoip/version', __FILE__)
-
-# import the jRuby Extension
-require File.expand_path("../java/jgeoip-#{JGeoIP::VERSION}", __FILE__)
 java_import 'org.github.tobsch.jgeoip.JGeoIPLibrary'
 JGeoIPLibrary.new.load(JRuby.runtime, false)
