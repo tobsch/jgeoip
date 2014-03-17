@@ -36,6 +36,9 @@ end
 task :build do
   system %(buildr package)
   raise unless $?.success?
+  libs = Dir['lib/java/jgeoip-*.jar']
+  FileUtils.mv(libs.sort.last, 'lib/java/jgeoip.jar')
+  FileUtils.rm_f(libs)
 end
 
 namespace :gem do

@@ -11,10 +11,9 @@ Gem::Specification.new do |s|
   s.description = 'This gem wraps maxminds original java library, which should make things faster than using other pure ruby libraries.'
   s.platform    = 'java'
   
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  s.files         = Dir['lib/**/*.rb', 'lib/**/*.jar']
+  s.test_files    = Dir['test/**/*.rb']
+  s.require_paths = %w[lib]
 
   s.add_dependency 'geoip-jars'
 
