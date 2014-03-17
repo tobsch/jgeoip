@@ -1,4 +1,3 @@
-require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'open-uri'
 require 'zlib'
@@ -33,3 +32,14 @@ namespace :setup do
     end
   end
 end
+
+task :build do
+  system %(buildr package)
+  raise unless $?.success?
+end
+
+namespace :gem do
+  require 'bundler/gem_tasks'
+end
+
+task :release => [:build, 'gem:release']
